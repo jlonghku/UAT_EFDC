@@ -1,0 +1,12 @@
+PMc    UNIFORM    2    5
+KHNc    UNIFORM    0.01    0.25
+KHPc    UNIFORM    0.001    0.005
+KRN    UNIFORM    0.001    0.01
+KTHDR    UNIFORM    0.05    0.1
+KLN    NORMAL    0.01    0.1 0.2
+WSrp    UNIFORM    0.2    1
+WSlp    UNIFORM    0.2    1
+
+
+
+

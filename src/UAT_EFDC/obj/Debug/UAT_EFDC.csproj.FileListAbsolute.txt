@@ -1,0 +1,5 @@
+C:\Users\jlong\source\repos\UAT_EFDC\UAT_EFDC\obj\Debug\UAT_EFDC.csprojAssemblyReference.cache
+C:\Users\jlong\source\repos\UAT_EFDC\UAT_EFDC\obj\Debug\MainWindow.g.cs
+C:\Users\jlong\source\repos\UAT_EFDC\UAT_EFDC\obj\Debug\App.g.cs
+C:\Users\jlong\source\repos\UAT_EFDC\UAT_EFDC\obj\Debug\UAT_EFDC_MarkupCompile.cache
+C:\Users\jlong\source\repos\UAT_EFDC\UAT_EFDC\obj\Debug\UAT_EFDC_MarkupCompile.lref

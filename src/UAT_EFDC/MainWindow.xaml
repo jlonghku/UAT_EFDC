@@ -1,0 +1,91 @@
+﻿<Window x:Class="UAT_EFDC.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UAT_EFDC"
+        mc:Ignorable="d"
+        Title="Uncertainty and Sensitivity Analysis Software for EFDC" Height="480" Width="600" ResizeMode="CanMinimize" FontSize="20" >
+    <Grid Name="ss">
+        <TextBox x:Name="cpt"  AcceptsReturn="True"  HorizontalAlignment="Left" Height="26.5" Margin="154.19,1.5,0,0"   VerticalAlignment="Top" Width="385.182" FontSize="14" TextChanged="TextChanged"/>
+        <TextBlock x:Name="cpl" Height="22.53" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Case Path:" VerticalAlignment="Top" FontSize="16" Margin="66.456,5.47,0,0" Width="87.734"/>
+        <Button x:Name="cpb" Tag="{Binding ElementName=cpt, Path=Text,Mode=TwoWay}" Content="..." HorizontalAlignment="Right"  VerticalAlignment="Top" Width="52.19"  Height="26.5" Click="import_dir_Click" Margin="0,0,-1.895,0" FontSize="14"/>
+        <TabControl Height="414" VerticalAlignment="Bottom" FontSize="14" RenderTransformOrigin="0.504,0.339">
+            <TabItem Header="Sampling and Prepare inp file">
+                <Grid Background="#0017CD40" Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="textBlock2" Height="20" HorizontalAlignment="Left" Margin="26,38,0,0" TextWrapping="Wrap" Text="Range file:" VerticalAlignment="Top" Width="80"/>
+                    <Button Name="rfb" Content="..." Tag="{Binding ElementName=rft, Path=Text,Mode=TwoWay}"  VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,32,10,0" Click="import_file_Click" RenderTransformOrigin="-1.226,-0.714" Width="65" Height="28"/>
+                    <TextBox Name="rft" TextChanged="TextChanged" Height="25" Width="371" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,32,95,0" AutoWordSelection="True"/>
+                    <TextBox x:Name="t1" TextChanged="TextChanged" HorizontalAlignment="Left" Height="25" Margin="122,191,0,0" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="t2" TextChanged="TextChanged" HorizontalAlignment="Left" Height="25" Margin="122,258,0,0" VerticalAlignment="Top" Width="120"/>
+                    <TextBlock x:Name="l1" HorizontalAlignment="Left" Margin="26,191,0,0" TextWrapping="Wrap" Text="Number:" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="l2" HorizontalAlignment="Left" Margin="26,258,0,0" TextWrapping="Wrap" Text="Seed:" VerticalAlignment="Top"/>
+                    <Button x:Name="write_inp" Content="Run" HorizontalAlignment="Left" Margin="494,235,0,0" VerticalAlignment="Top"  Click="write_inp_Click" Width="84" Height="48"/>
+                    <TextBox x:Name="ift"  TextChanged="TextChanged" HorizontalAlignment="Left" Height="25" Margin="122,106,0,0"   VerticalAlignment="Top" Width="371"/>
+                    <TextBlock x:Name="ifl" Height="25" HorizontalAlignment="Left" Margin="26,106,0,0" TextWrapping="Wrap" Text="Input file:" VerticalAlignment="Top" Width="139"/>
+                    <Button x:Name="ifb" Tag="{Binding ElementName=ift, Path=Text,Mode=TwoWay}" Content="..." HorizontalAlignment="Left" Margin="513,106,0,0" VerticalAlignment="Top" Click="import_file_Click" Width="65" Height="25"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Run Model and Get Results">
+                <Grid Background="#00E5E5E5" Margin="0,0" RenderTransformOrigin="0.52,0.506">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="mpt" TextChanged="TextChanged"  HorizontalAlignment="Left" Height="25" Margin="101,22,0,0"   VerticalAlignment="Top" Width="399"/>
+                    <TextBlock x:Name="f2" Height="30" HorizontalAlignment="Left" Margin="11,22,0,0" TextWrapping="Wrap" Text="Model path:" VerticalAlignment="Top"/>
+                    <Button x:Name="mpb" Tag="{Binding ElementName=mpt, Path=Text,Mode=TwoWay}" Content="..." HorizontalAlignment="Left" Margin="517,22,0,0" VerticalAlignment="Top"   Click="import_dir_Click" Width="61" Height="25" />
+                    <TextBox x:Name="t3" TextChanged="TextChanged" HorizontalAlignment="Left" Height="25" Margin="101,121,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Button x:Name="run_model" Content="Run Model" HorizontalAlignment="Left" Margin="480,147,0,0" VerticalAlignment="Top"  Click="run_model_Click" Width="103" Height="45"/>
+                    <TextBlock x:Name="l3" Text="Total times:" HorizontalAlignment="Left" Margin="15,121,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="25"/>
+                    <Label x:Name="label" Content="Getefdc inp:" Margin="5,69,0,0" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBox x:Name="gft" TextChanged="TextChanged"  HorizontalAlignment="Left" Height="25" Margin="101,69,0,0"   VerticalAlignment="Top" Width="398"/>
+                    <Button x:Name="gfb" Tag="{Binding ElementName=gft, Path=Text,Mode=TwoWay}" Content="Load inp" HorizontalAlignment="Left" Margin="517,69,0,0" VerticalAlignment="Top"   Click="import_getefdcfile_Click" Width="61" Height="25" />
+                    <TextBox x:Name="ntt" TextChanged="TextChanged" HorizontalAlignment="Left" Height="25" Margin="101,160,0,0" VerticalAlignment="Top" Width="120"/>
+                    <TextBlock x:Name="ntl" Text="Threads:" HorizontalAlignment="Left" Margin="15,160,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="25"/>
+                    <Button x:Name="Calculate" Content="Calculate LHV" HorizontalAlignment="Left" Margin="480,317,0,21.333" Click="calculate_lhv_Click" Width="103"/>
+                    <TextBox x:Name="t5" TextChanged="TextChanged" HorizontalAlignment="Left" Height="25" Margin="140,337,0,0" VerticalAlignment="Top" Width="96"/>
+                    <TextBox x:Name="t4" TextChanged="TextChanged" HorizontalAlignment="Left" Height="25" Margin="140,275,0,0" VerticalAlignment="Top" Width="96"/>
+                    <TextBox x:Name="mft" TextChanged="TextChanged" HorizontalAlignment="Left" Height="25" Margin="140,220,0,0"  VerticalAlignment="Top" Width="335"/>
+                    <TextBlock x:Name="l4" HorizontalAlignment="Left" Height="21" Margin="7,279,0,0"  VerticalAlignment="Top" Width="125" ><Run Text="START "/><Run Text="RESULT"/><Run Text=" "/><Run Text="No:"/></TextBlock>
+                    <TextBlock x:Name="l5" HorizontalAlignment="Left" Height="21" Margin="11,341,0,0"  VerticalAlignment="Top" Width="121" ><Run Text="END "/><Run Text="RESULT "/><Run Text="No:"/></TextBlock>
+                    <Button x:Name="mfb" Tag="{Binding Text, ElementName=mft, Mode=TwoWay}" Content="..."  Margin="544,220,5,0" VerticalAlignment="Top" Click="import_file_Click" Height="25"/>
+                    <ComboBox Name="svc" HorizontalAlignment="Left" Margin="480,221,0,0" VerticalAlignment="Top" Width="59" SelectedIndex="0">
+                        <ComboBoxItem Content="CHC"/>
+                        <ComboBoxItem Content="CHD"/>
+                        <ComboBoxItem Content="CHG"/>
+                        <ComboBoxItem Content="COD"/>
+                        <ComboBoxItem Content="DEP"/>
+                        <ComboBoxItem Content="DOC"/>
+                        <ComboBoxItem Content="DON"/>
+                        <ComboBoxItem Content="DOP"/>
+                        <ComboBoxItem Content="DOX"/>
+                        <ComboBoxItem Content="FCB"/>
+                        <ComboBoxItem Content="LOC"/>
+                        <ComboBoxItem Content="LON"/>
+                        <ComboBoxItem Content="LOP"/>
+                        <ComboBoxItem Content="NHX"/>
+                        <ComboBoxItem Content="NOX"/>
+                        <ComboBoxItem Content="P4D"/>
+                        <ComboBoxItem Content="QSM"/>
+                        <ComboBoxItem Content="ROC"/>
+                        <ComboBoxItem Content="RON"/>
+                        <ComboBoxItem Content="ROP"/>
+                        <ComboBoxItem Content="SAA"/>
+                        <ComboBoxItem Content="SUU"/>
+                        <ComboBoxItem Content="TAM"/>
+                        <ComboBoxItem Content="TEM"/>
+                        <ComboBoxItem Content="VEL"/>
+                    </ComboBox>
+                    <TextBlock x:Name="ntl_Copy" HorizontalAlignment="Left" Margin="17,224,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="21" Width="105" RenderTransformOrigin="1.754,0.311"><Run Text="Monitoring "/><Run Text="file:"/></TextBlock>
+                    <Button x:Name="gfb_Copy" Tag="{Binding Text, ElementName=gft, Mode=TwoWay}" Content="Edit inp" HorizontalAlignment="Left" Margin="517,103,0,0" VerticalAlignment="Top"   Click="loadw2" Width="61" Height="25" />
+                    <GroupBox Header="Cal LHV" HorizontalAlignment="Left" Height="186" Margin="-10,197,0,0" VerticalAlignment="Top" Width="598" d:IsHidden="True"/>
+                    <GroupBox Header="Run model" HorizontalAlignment="Left" Height="197" VerticalAlignment="Top" Width="588" Margin="0,0,0,0" d:IsHidden="True"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="set" Content="Settings" HorizontalAlignment="Right"  VerticalAlignment="Top" Width="61.456"  Height="30" Click="loadsettings" Margin="0,1.5,533.211,0" FontSize="14"/>
+    </Grid>
+</Window>

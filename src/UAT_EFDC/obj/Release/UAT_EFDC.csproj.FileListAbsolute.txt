@@ -1,0 +1,15 @@
+C:\Users\jlong\source\repos\UAT_EFDC\UAT_EFDC\obj\Release\MainWindow.g.cs
+C:\Users\jlong\source\repos\UAT_EFDC\UAT_EFDC\obj\Release\App.g.cs
+C:\Users\jlong\source\repos\UAT_EFDC\UAT_EFDC\obj\Release\UAT_EFDC_MarkupCompile.cache
+C:\Users\jlong\source\repos\UAT_EFDC\UAT_EFDC\obj\Release\UAT_EFDC_MarkupCompile.lref
+C:\Users\jlong\source\repos\UAT_EFDC\UAT_EFDC\obj\Release\Window1.g.cs
+C:\Users\jlong\source\repos\UAT_EFDC\UAT_EFDC\bin\Release\UAT_EFDC.exe
+C:\Users\jlong\source\repos\UAT_EFDC\UAT_EFDC\bin\Release\UAT_EFDC.pdb
+C:\Users\jlong\source\repos\UAT_EFDC\UAT_EFDC\obj\Release\MainWindow.baml
+C:\Users\jlong\source\repos\UAT_EFDC\UAT_EFDC\obj\Release\Window1.baml
+C:\Users\jlong\source\repos\UAT_EFDC\UAT_EFDC\obj\Release\UAT_EFDC.g.resources
+C:\Users\jlong\source\repos\UAT_EFDC\UAT_EFDC\obj\Release\UAT_EFDC.Properties.Resources.resources
+C:\Users\jlong\source\repos\UAT_EFDC\UAT_EFDC\obj\Release\UAT_EFDC.csproj.GenerateResource.cache
+C:\Users\jlong\source\repos\UAT_EFDC\UAT_EFDC\obj\Release\UAT_EFDC.csproj.CoreCompileInputs.cache
+C:\Users\jlong\source\repos\UAT_EFDC\UAT_EFDC\obj\Release\UAT_EFDC.exe
+C:\Users\jlong\source\repos\UAT_EFDC\UAT_EFDC\obj\Release\UAT_EFDC.pdb

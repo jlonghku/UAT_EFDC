@@ -1,0 +1,28 @@
+    SUBROUTINE CALLHV(NO,NUM,MNZS,SCZ)
+    !DEC$ ATTRIBUTES DLLEXPORT::CALLHV
+    IMPLICIT NONE
+    INTEGER*4 ::NUM(3),NO
+    REAL*8 ::SCZ(NUM(1),NUM(2))
+    REAL*8 ::MNZS(NUM(1),NUM(2),NUM(3))
+    REAL*8 ::MNZ(NUM(1),NUM(2))
+    REAL*8 ::LHV(NUM(1)-1)
+    INTEGER*4 ::J,I,K
+    REAL*8 ::R(NUM(2)),R0(NUM(2))
+    DO I=1,NUM(1)
+        MNZ(I,:)=0
+    ENDDO
+    DO K=1,NUM(3)
+        DO J=1,NUM(2)
+            MNZ(:,J)=MNZ(:,J)+MNZS(:,J,K)
+        ENDDO
+    ENDDO
+    MNZ=MNZ/NUM(3)
+    DO J=2,NUM(1)
+        R=SCZ(J,:)-MNZ(J,:)
+        R0= SCZ(J,:)- SUM(SCZ(J,:))/NUM(2)
+        LHV(J-1)=1-DOT_PRODUCT( R,R )/DOT_PRODUCT( R0,R0 )
+    ENDDO
+    OPEN(97,FILE='LHV.OUT',STATUS='UNKNOWN',POSITION='APPEND')
+    WRITE(97,'(I6,100F12.6)')NO,LHV
+    CLOSE(97,STATUS='KEEP')
+    END

@@ -1,0 +1,28 @@
+﻿<Window x:Class="UAT_EFDC.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UAT_EFDC"
+        mc:Ignorable="d"
+        Title="Edit Getefdc" Height="600" Width="800">
+    <Grid>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,217,0,0" TextWrapping="Wrap" Text="t" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="0,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="431" Width="526"><Run Text="*****************************************************************************"/><LineBreak/><Run Text="** OPTIONS FOR OUTPUT:"/><LineBreak/><Run Text="** LAYK        = K&gt;0: DATA AT LAYER NUMBER K TO BE EXPORTED AT TIME=JULTIME "/><LineBreak/><Run Text="**                 0: DEPTH-AVERAGED DATA IS EXPORTED"/><LineBreak/><Run Text="**                -1: Get High Frequency output FOR CELLS"/><LineBreak/><Run Text="**                -2: Extract data for Time series at a height above bed (m)"/><LineBreak/><Run Text="**                -3: LOAD TMP.DAT AND EXPORT TECPLOT"/><LineBreak/><Run Text="**"/><LineBreak/><Run Text="** ZOPT          = 1: FOR THE DEPTH UNDER WATER SURFACE IF LAYK=-2"/><LineBreak/><Run Text="**                 2: FOR THE HEIGHT ABOVE BOTTOM IF LAYK=-2"/><LineBreak/><Run Text="** NDRIFTER         : N1:N2 A SET OF DRIFTER TO GET (X,Y,Z)"/><LineBreak/><Run Text="**"/><LineBreak/><Run Text="**"/><LineBreak/><Run Text="** JULTIME          : JULIAN TIME FOR SELECTED LAYER"/><LineBreak/><Run Text="**                  &gt; MAXTIME THEN JULTIME=MAXTIME"/><LineBreak/><Run Text="**                    0 DATA FOR ALL SNAPSHOT"/><LineBreak/><Run Text="** NLOC             : NUMBER OF CELLS TO EXTRACT TIMESERIES"/><LineBreak/><Run Text="** ROTA          = 1: (U,V) AT CELL CENTER ROTATED TO TRUE EAST AND TRUE NORTH"/><LineBreak/><Run Text="**                 0: (U,V) AT CELL  FACES WITHOUT ROTATION"/><LineBreak/><Run Text="** INDEX         = 1: (I,J) OF CELLS ARE GIVEN"/><LineBreak/><Run Text="**                 0: (X,Y) OF CELLS ARE GIVEN"/><LineBreak/><Run Text="** VPROF         = 1: EXPORT VERTICAL PROFILE"/><LineBreak/><Run Text="**               = 0: NO EXPORTATION FOR VERTICAL PROFILE"/><LineBreak/><Run Text="**"/><LineBreak/><Run Text="** TECPLOT       = 1: EXPORT DATA FOR TECPLOT"/><LineBreak/><Run Text="**               = 0: NO TECPLOT EXPORTATION"/><LineBreak/><Run Text="**"/><LineBreak/><Run Text="*****************************************************************************"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="35,46,0,0" TextWrapping="Wrap" Text="LAYK    JULTIME      NLOC    ROTA  INDEX  VPROF  TECPLOT   ZOPT  NDRIFTER" VerticalAlignment="Top" Width="623" FontSize="16"/>
+        <TextBox Name="t10"   HorizontalAlignment="Left" Height="431" Margin="505,130,0,0" TextWrapping="Wrap" Text="15              5            0.1&#xD;&#xA;&#x9;15              6            0.1&#xD;&#xA;&#x9;15              7            0.1&#xD;&#xA;&#x9;15              9            0.1&#xD;&#xA;                 15             8            0.1" VerticalAlignment="Top" Width="288" FontSize="16" TextChanged="TextChanged" AcceptsReturn="True" AcceptsTab="True"/>
+        <TextBox Name="t1" HorizontalAlignment="Left" Height="30" Margin="35,71,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="30" FontSize="16" TextChanged="TextChanged"/>
+        <TextBox Name="t2" TextChanged="TextChanged" HorizontalAlignment="Left" Height="30" Margin="102,71,0,0" TextWrapping="Wrap" Text="1.0" VerticalAlignment="Top" Width="30" FontSize="16"/>
+        <TextBox Name="t3"   TextChanged="TextChanged" HorizontalAlignment="Left" Height="30" Margin="189,71,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="30" FontSize="16"/>
+        <TextBox  Name="t4" TextChanged="TextChanged" HorizontalAlignment="Left" Height="30" Margin="259,71,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="30" FontSize="16"/>
+        <TextBox Name="t5" TextChanged="TextChanged" HorizontalAlignment="Left" Height="30" Margin="319,71,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="30" FontSize="16"/>
+        <TextBox Name="t6" TextChanged="TextChanged" HorizontalAlignment="Left" Height="30" Margin="372,71,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="30" FontSize="16"/>
+        <TextBox Name="t7" TextChanged="TextChanged" HorizontalAlignment="Left" Height="30" Margin="434,71,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="30" FontSize="16"/>
+        <TextBox Name="t8"  TextChanged="TextChanged" HorizontalAlignment="Left" Height="30" Margin="498,71,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="30" FontSize="16"/>
+        <TextBox Name="t9"  TextChanged="TextChanged"  HorizontalAlignment="Left" Height="30" Margin="573,71,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="30" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="531,105,0,0" TextWrapping="Wrap" Text="I/X           J/Y          ZINT(m)" VerticalAlignment="Top" Width="246" FontSize="16" Height="25"/>
+        <TextBox Name ="p" TextChanged="TextChanged" HorizontalAlignment="Left" Height="30" Margin="102,2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="579" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="35,4,0,0" TextWrapping="Wrap" Text="Path:" VerticalAlignment="Top" FontSize="20"/>
+
+    </Grid>
+</Window>
