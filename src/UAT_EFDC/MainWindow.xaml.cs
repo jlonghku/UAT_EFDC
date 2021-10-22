@@ -24,7 +24,7 @@ namespace UAT_EFDC
         public MainWindow()
         {
             InitializeComponent();
-            
+
             if (File.Exists("Data.ini"))
             {
                 string[] arr1 = File.ReadAllLines("Data.ini");
@@ -43,30 +43,68 @@ namespace UAT_EFDC
                     t5.Text = arr1[10];
                     ntt.Text = arr1[11];
                 }
-               
+                if (File.Exists(gft.Text))
+                {
+                    System.IO.File.Copy(gft.Text, @"getefdc.inp", true);
+                }
             }
-            System.IO.File.Copy(gft.Text, @"getefdc.inp", true);
+            else
+            {
+                string basedir = new DirectoryInfo(System.Environment.CurrentDirectory).Parent.FullName;
+                cpt.Text = basedir +"\\case";
+                rft.Text = basedir + "\\case\\para.inp";
+                ift.Text = basedir + "\\case\\wq3dwc.inp";
+                mpt.Text = basedir + "\\model";
+                gft.Text = basedir + "\\case\\getefdc.inp";
+                mft.Text = basedir + "\\case\\monitoring_data.inp";
+                t1.Text = "100";
+                t2.Text = "933090935";
+                t3.Text = t1.Text;
+                t4.Text = "1";
+                t5.Text = t1.Text;
+                ntt.Text = "6";
+                if (File.Exists(gft.Text))
+                {
+                    System.IO.File.Copy(gft.Text, @"getefdc.inp", true);
+                }
+            }
+            saveData();
+            if (!File.Exists("Settings.ini"))
+            {
+                string[] arr = new string[2];
+                arr[0] = System.Environment.CurrentDirectory + "\\ReleaseDP64\\EFDCPlus_085_OMP_190819_DPx64.exe";
+                arr[1] = System.Environment.CurrentDirectory + "\\ReleaseDP64\\GetEFDC.exe";
+                
+               
+                StreamWriter sw = new StreamWriter("Settings.ini");
+                foreach (string i in arr) { sw.WriteLine(i); }
+                sw.Close();
+            }
+        }
+        private void saveData()
+        {
+            string[] arr = new string[12];
+            arr[0] = cpt.Text;
+            arr[1] = rft.Text;
+            arr[2] = ift.Text;
+            arr[3] = mpt.Text;
+            arr[4] = gft.Text;
+            arr[5] = mft.Text;
+            arr[6] = t1.Text;
+            arr[7] = t2.Text;
+            arr[8] = t3.Text;
+            arr[9] = t4.Text;
+            arr[10] = t5.Text;
+            arr[11] = ntt.Text;
+            StreamWriter sw = new StreamWriter("Data.ini");
+            foreach (string i in arr) { sw.WriteLine(i); }
+            sw.Close();
         }
         private void TextChanged(object sender, TextChangedEventArgs e)
         {
             if (this.IsLoaded)
             {
-                string[] arr = new string[12];
-                arr[0] = cpt.Text;
-                arr[1] = rft.Text;
-                arr[2] = ift.Text;
-                arr[3] = mpt.Text;
-                arr[4] = gft.Text;
-                arr[5] = mft.Text;
-                arr[6] = t1.Text;
-                arr[7] = t2.Text;
-                arr[8] = t3.Text;
-                arr[9] = t4.Text;
-                arr[10] = t5.Text;
-                arr[11] = ntt.Text;
-                StreamWriter sw = new StreamWriter("Data.ini");
-                foreach (string i in arr) { sw.WriteLine(i); }
-                sw.Close();
+                saveData();
             }
         }
         //import LHS.dll       
@@ -74,7 +112,7 @@ namespace UAT_EFDC
         public static extern void LHS();
         private void Sampling()
         {
-            
+
             //1.make file LHSinput.dat=================
             String[] arr = File.ReadAllLines(rft.Text);
             List<string> phead = new List<string> { };
@@ -166,10 +204,10 @@ namespace UAT_EFDC
             {
                 string[] settings = File.ReadAllLines("Settings.ini");
                 //prepare running model 
-               string resstr= cpt.Text + "\\RESULT";
-                if(Directory.Exists(resstr))
+                string resstr = cpt.Text + "\\RESULT";
+                if (Directory.Exists(resstr))
                 { Directory.Delete(resstr, true); }
-                    Directory.CreateDirectory(resstr);
+                Directory.CreateDirectory(resstr);
                 int num = Convert.ToInt32(t3.Text);
                 string inpfile = Regex.Match(ift.Text, @"[^/\\]+[/\\]*$").ToString();
                 string casepath = cpt.Text;
@@ -191,9 +229,9 @@ namespace UAT_EFDC
                     };
                     Process run = Process.Start(procInfo);
                     run.WaitForExit();
-                    
+
                     var processInfo = new ProcessStartInfo(settings[1], "getefdc.inp")
-                    { 
+                    {
                         CreateNoWindow = true,
                         UseShellExecute = true,
                         //WindowStyle = ProcessWindowStyle.Hidden,
@@ -201,10 +239,10 @@ namespace UAT_EFDC
                     };
                     Process outefdc = Process.Start(processInfo);
                     outefdc.WaitForExit();
-                    string resstri= cpt.Text + "\\RESULT\\RESULT" + no.ToString("0000");
+                    string resstri = cpt.Text + "\\RESULT\\RESULT" + no.ToString("0000");
                     if (Directory.Exists(resstri))
                     { Directory.Delete(resstri, true); }
-                    System.IO.Directory.Move(mpt.Text + "\\#output\\RESULT",resstri);
+                    System.IO.Directory.Move(mpt.Text + "\\#output\\RESULT", resstri);
                 }
                 System.Windows.MessageBox.Show("End of Running!");
             }
@@ -212,7 +250,7 @@ namespace UAT_EFDC
         }
         //import CALLHV
         [DllImport("UAT_LIB.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int CALLHV(  ref int NO_,  int[] NUM_,   Double[,,] mn_,   Double[,] sc_);
+        public static extern int CALLHV(ref int NO_, int[] NUM_, Double[,,] mn_, Double[,] sc_);
         private void calculate_lhv_Click(object sender, RoutedEventArgs e)
         {
             string sczpath = mft.Text;
@@ -232,11 +270,11 @@ namespace UAT_EFDC
                     scz.Add(tmpd.ToArray()); tmpd.Clear();
                 }
             }
-            for (int no= Convert.ToInt32(t4.Text); no <= Convert.ToInt32(t5.Text) ; no++)
+            for (int no = Convert.ToInt32(t4.Text); no <= Convert.ToInt32(t5.Text); no++)
             {
                 //get mnz file
                 List<List<Double[]>> mnzs = new List<List<Double[]>> { };
-                var files = Directory.GetFiles(cpt.Text+"\\RESULT\\RESULT"+ no.ToString("0000"), svc.SelectionBoxItem.ToString() + "_*_CEL.DAT");
+                var files = Directory.GetFiles(cpt.Text + "\\RESULT\\RESULT" + no.ToString("0000"), svc.SelectionBoxItem.ToString() + "_*_CEL.DAT");
                 foreach (string file in files)
                 {
                     List<Double[]> mnz = new List<Double[]> { };
@@ -278,7 +316,7 @@ namespace UAT_EFDC
                     for (int j = 0; j < scz[0].Length; j++) { sc[i, j] = scz[i][j]; }
                 }
                 int[] num = new int[] { mn.GetLength(2), mn.GetLength(1), mn.GetLength(0) };
-                CALLHV( ref no,  num ,   mn,    sc);
+                CALLHV(ref no, num, mn, sc);
             }
             System.IO.File.Delete(cpt.Text + "\\lhv.out");
             System.IO.File.Move(@"LHV.OUT", cpt.Text + "\\lhv.out");
@@ -308,7 +346,7 @@ namespace UAT_EFDC
             Button b = (Button)sender;
             OpenFileDialog op = new OpenFileDialog();
             op.FileName = b.Tag.ToString();
-            op.InitialDirectory=b.Tag.ToString();  
+            op.InitialDirectory = b.Tag.ToString();
             op.Filter = "inp file(*.inp)|*.inp|all files(*.*)|*.*";
             op.ShowDialog();
             b.Tag = op.FileName;
@@ -316,13 +354,13 @@ namespace UAT_EFDC
         private void import_getefdcfile_Click(object sender, RoutedEventArgs e)
         {
             //get path
-            import_file_Click(sender,  e);
+            import_file_Click(sender, e);
             System.IO.File.Copy(gft.Text, @"getefdc.inp", true);
 
         }
         private void loadw2(object sender, RoutedEventArgs e)
         {
-           Window2 w2 = new Window2(mpt.Text);
+            Window2 w2 = new Window2(gft.Text);
             w2.Show();
 
         }

@@ -20,15 +20,15 @@ namespace UAT_EFDC
     public partial class Window2 : Window
     {
         
-        public Window2(string mpt)
+        public Window2(string gft)
         {
             InitializeComponent();
-            if (File.Exists(@"getefdc.inp"))
+            if (File.Exists(gft))
             {
-               string [] arr = File.ReadAllLines(@"getefdc.inp");
+               string [] arr = File.ReadAllLines(gft);
                 List<string> al = new List<string> { };
                 foreach(string i in arr) { if (i[0] !='*') { al.Add(i); } };
-                p.Text = mpt+"\\efdc.inp";              
+                p.Text = al[0];              
                 al.RemoveAt(0);
                string[] arr1=al[0].Split(new char[2] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);               
                 if (arr1.Length >= 9)
@@ -49,30 +49,36 @@ namespace UAT_EFDC
                
                 t10.Text = string.Join("\n",xyz.ToArray());
             }
+            save();
+            
         }
         private void TextChanged(object sender, TextChangedEventArgs e)
         {
             if (this.IsLoaded)
             {
-                string[] arr = new string[3];
-                string[] arr1 = new string[9];
-
-                arr[0] = p.Text;
-                arr1[0] = t1.Text;
-                arr1[1] = t2.Text;
-                arr1[2] = t3.Text;
-                arr1[3] = t4.Text;
-                arr1[4] = t5.Text;
-                arr1[5] = t6.Text;
-                arr1[6] = t7.Text;
-                arr1[7] = t8.Text;
-                arr1[8] = t9.Text;
-                arr[1] = string.Join("\t", arr1);
-                arr[2] = t10.Text;
-                StreamWriter sw = new StreamWriter(@"getefdc.inp");
-                foreach (string i in arr) { sw.WriteLine(i); }
-                sw.Close();
+                save();
             }
+        }
+        private void save()
+        {
+            string[] arr = new string[3];
+            string[] arr1 = new string[9];
+
+            arr[0] = p.Text;
+            arr1[0] = t1.Text;
+            arr1[1] = t2.Text;
+            arr1[2] = t3.Text;
+            arr1[3] = t4.Text;
+            arr1[4] = t5.Text;
+            arr1[5] = t6.Text;
+            arr1[6] = t7.Text;
+            arr1[7] = t8.Text;
+            arr1[8] = t9.Text;
+            arr[1] = string.Join("\t", arr1);
+            arr[2] = t10.Text;
+            StreamWriter sw = new StreamWriter(@"getefdc.inp");
+            foreach (string i in arr) { sw.WriteLine(i); }
+            sw.Close();
         }
 
     }
