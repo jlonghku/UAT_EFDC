@@ -2,7 +2,7 @@
 Uncertainty and sensitivity analysis tool for EFDC model
 ## Modules
 1. Perform Latin HyperCube sampling of the parameters to get the input parameter file
-2. Read the sampled input parameters, run the model and save the results.
+2. Read the input parameters sampled, run the model and save the results.
 3. Read the output file and calculate the Nash-Sutcliffe coefficient.
 ## Quick start
 Run the program UAT_EFDC.exe in path: ./release/
@@ -13,7 +13,7 @@ Run the program UAT_EFDC.exe in path: ./release/
 Figure. 1
 
 1. Input the case path
-2. Selcect the range file of sampling parameters, including the parameter name, prior distribution and range of values, see Figure 2 for the specific file format, the first column is the parameter name, the second column is the prior distribution, the third and fourth columns are the minimum and maximum values of the parameters, separated by TAB keys.
+2. Selcect the range file of sampling parameters, including the parameter name, prior distribution and range of values, see figure 2 for the specific file format, the first column is the parameter name, the second column is the prior distribution, the third and fourth columns are the minimum and maximum values of the parameters, separated by TAB keys.
 
 ![avatar](https://github.com/jlonghku/UAT_EFDC/blob/master/img/Fig2.png)  
 
@@ -55,8 +55,8 @@ The model will start running and the result will be stored in "RESULT" folder.
 
 Figure. 6
 
-1. Select the monitoring file. It contains the calibration data at specific locations.The first column is the time and other columns are the monitoring results.
-2. Select the types of parameters.
+1. Select the monitoring file. It contains the calibration data at specific locations.The first column is the time and other columns are the monitoring data.
+2. Select the type of parameters.
 3. Input the start and end numder of result to be calculated.
 4. Click the "Run Model" button
 
