@@ -33,3 +33,4 @@ G:\我的云端硬盘\My programs\UAT_EFDC\src\UAT_EFDC\obj\x86\Release\UAT_EFDC
 G:\我的云端硬盘\My programs\UAT_EFDC\src\UAT_EFDC\obj\x86\Release\UAT_EFDC.csproj.CoreCompileInputs.cache
 G:\我的云端硬盘\My programs\UAT_EFDC\src\UAT_EFDC\obj\x86\Release\UAT_EFDC.exe
 G:\我的云端硬盘\My programs\UAT_EFDC\src\UAT_EFDC\obj\x86\Release\UAT_EFDC.pdb
+G:\我的云端硬盘\My programs\UAT_EFDC\src\UAT_EFDC\obj\x86\Release\UAT_EFDC.csprojAssemblyReference.cache
