@@ -5,6 +5,7 @@ Uncertainty and sensitivity analysis tool for EFDC model
 2. Read the sampled input parameters, run the model and save the results.
 3. Read the output file and calculate the Nash-Sutcliffe coefficient.
 ## Quick start
+Run the program UAT_EFDC.exe in path: ./release/
 ### 1. Sampling
 
 ![avatar](https://github.com/jlonghku/UAT_EFDC/blob/master/img/Fig1.png)
