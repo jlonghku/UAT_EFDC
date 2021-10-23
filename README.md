@@ -6,6 +6,7 @@ Uncertainty and sensitivity analysis tool for EFDC model
 3. Read the output file and calculate the Nash-Sutcliffe coefficient.
 ## Quick start
 ### 1. Sampling
+
 ![avatar](https://github.com/jlonghku/UAT_EFDC/blob/master/img/Fig1.png)
 
 Figure. 1
@@ -20,15 +21,18 @@ Figure. 2
 6. Click the "Run" button to perform the sampling.
 
 The sampling result is generated in file "Parameters.out" and the modified input files are listed in the "inp" folder.
+
 ![avatar](https://github.com/jlonghku/UAT_EFDC/blob/master/img/Fig3.png)
 
 Figure. 3
 ### 2. Run the model
+
 ![avatar](https://github.com/jlonghku/UAT_EFDC/blob/master/img/Fig4.png)
 
 Figure. 4
 1. Input the model path, it should include all model input files. 
 2. Select or edit the "Getefdc.inp". It describes the data that needs to be output. Please see figure 5.
+
 ![avatar](https://github.com/jlonghku/UAT_EFDC/blob/master/img/Fig5.png)
 
 Figure. 5
@@ -39,6 +43,7 @@ Figure. 5
 The model will start running and the result will be stored in "RESULT" folder.
 
 ### 3. Calculate the Nash-Sutcliffe coefficient
+
 ![avatar](https://github.com/jlonghku/UAT_EFDC/blob/master/img/Fig6.png)
 
 Figure. 6
