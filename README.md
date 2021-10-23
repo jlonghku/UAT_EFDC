@@ -60,3 +60,10 @@ Figure. 6
 4. Click the "Run Model" button
 
 The tool will start calculating and the result will be stored in "lhv.out" file.
+
+### 4. Settings
+Click setting button can setup the path of EFDC.EXE and GetEFDC.exe.
+
+![avatar](https://github.com/jlonghku/UAT_EFDC/blob/master/img/Fig7.png)
+
+Figure. 7
